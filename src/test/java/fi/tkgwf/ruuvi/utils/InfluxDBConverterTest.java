@@ -53,6 +53,7 @@ class InfluxDBConverterTest {
             "absoluteHumidity",
             "dewPoint",
             "equilibriumVaporPressure",
+            "leafVaporPressureDeficit",
             "airDensity",
             "accelerationAngleFromX",
             "accelerationAngleFromY",
@@ -112,6 +113,7 @@ class InfluxDBConverterTest {
         assertFalse(point.toString().contains("absoluteHumidity"));
         assertFalse(point.toString().contains("dewPoint"));
         assertFalse(point.toString().contains("equilibriumVaporPressure"));
+        assertFalse(point.toString().contains("leafVaporPressureDeficit"));
         assertFalse(point.toString().contains("airDensity"));
         assertFalse(point.toString().contains("accelerationAngleFromX"));
         assertFalse(point.toString().contains("accelerationAngleFromY"));
@@ -143,7 +145,7 @@ class InfluxDBConverterTest {
         return Arrays.asList("mac", "dataFormat", "time", "temperature", "humidity", "pressure",
             "accelerationX", "accelerationY", "accelerationZ", "batteryVoltage", "txPower", "movementCounter",
             "measurementSequenceNumber", "rssi", "accelerationTotal", "absoluteHumidity", "dewPoint",
-            "equilibriumVaporPressure", "airDensity", "accelerationAngleFromX", "accelerationAngleFromY",
+            "equilibriumVaporPressure", "leafVaporPressureDeficit", "airDensity", "accelerationAngleFromX", "accelerationAngleFromY",
             "accelerationAngleFromZ");
     }
 
@@ -173,6 +175,7 @@ class InfluxDBConverterTest {
         measurement.setAbsoluteHumidity(d++);
         measurement.setDewPoint(d++);
         measurement.setEquilibriumVaporPressure(d++);
+        measurement.setLeafVaporPressureDeficit(d++);
         measurement.setAirDensity(d++);
         measurement.setAccelerationAngleFromX(d++);
         measurement.setAccelerationAngleFromY(d++);

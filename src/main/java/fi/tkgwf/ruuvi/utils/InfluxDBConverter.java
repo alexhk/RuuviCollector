@@ -77,6 +77,7 @@ public class InfluxDBConverter {
         addValueIfAllowed(p, "absoluteHumidity", measurement, EnhancedRuuviMeasurement::getAbsoluteHumidity, allowField);
         addValueIfAllowed(p, "dewPoint", measurement, EnhancedRuuviMeasurement::getDewPoint, allowField);
         addValueIfAllowed(p, "equilibriumVaporPressure", measurement, EnhancedRuuviMeasurement::getEquilibriumVaporPressure, allowField);
+        addValueIfAllowed(p, "leafVaporPressureDeficit", measurement, EnhancedRuuviMeasurement::getLeafVaporPressureDeficit, allowField);
         addValueIfAllowed(p, "airDensity", measurement, EnhancedRuuviMeasurement::getAirDensity, allowField);
         addValueIfAllowed(p, "accelerationAngleFromX", measurement, EnhancedRuuviMeasurement::getAccelerationAngleFromX, allowField);
         addValueIfAllowed(p, "accelerationAngleFromY", measurement, EnhancedRuuviMeasurement::getAccelerationAngleFromY, allowField);

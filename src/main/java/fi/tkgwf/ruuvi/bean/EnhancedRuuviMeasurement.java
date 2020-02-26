@@ -74,6 +74,10 @@ public class EnhancedRuuviMeasurement extends RuuviMeasurement {
      */
     private Double equilibriumVaporPressure;
     /**
+     * Leaf vapor pressure deficit
+     */
+    private Double leafVaporPressureDeficit;
+    /**
      * Density of air
      */
     private Double airDensity;
@@ -165,7 +169,12 @@ public class EnhancedRuuviMeasurement extends RuuviMeasurement {
     public void setEquilibriumVaporPressure(Double equilibriumVaporPressure) {
         this.equilibriumVaporPressure = equilibriumVaporPressure;
     }
-    
+    public Double getLeafVaporPressureDeficit() {
+        return leafVaporPressureDeficit;
+    }
+    public void setLeafVaporPressureDeficit(Double leafVaporPressureDeficit) {
+        this.leafVaporPressureDeficit = leafVaporPressureDeficit;
+    }
     public Double getAirDensity() {
         return airDensity;
     }
@@ -176,19 +185,20 @@ public class EnhancedRuuviMeasurement extends RuuviMeasurement {
 
     @Override
     public String toString() {
-        return "EnhancedRuuviMeasurement{" 
-                + "time=" + time 
-                + ", name=" + name 
-                + ", mac=" + mac 
-                + ", rssi=" + rssi 
-                + ", accelerationTotal=" + accelerationTotal 
-                + ", accelerationAngleFromX=" + accelerationAngleFromX 
-                + ", accelerationAngleFromY=" + accelerationAngleFromY 
-                + ", accelerationAngleFromZ=" + accelerationAngleFromZ 
-                + ", absoluteHumidity=" + absoluteHumidity 
-                + ", dewPoint=" + dewPoint 
-                + ", equilibriumVaporPressure=" + equilibriumVaporPressure 
-                + ", airDensity=" + airDensity 
+        return "EnhancedRuuviMeasurement{"
+                + "time=" + time
+                + ", name=" + name
+                + ", mac=" + mac
+                + ", rssi=" + rssi
+                + ", accelerationTotal=" + accelerationTotal
+                + ", accelerationAngleFromX=" + accelerationAngleFromX
+                + ", accelerationAngleFromY=" + accelerationAngleFromY
+                + ", accelerationAngleFromZ=" + accelerationAngleFromZ
+                + ", absoluteHumidity=" + absoluteHumidity
+                + ", dewPoint=" + dewPoint
+                + ", equilibriumVaporPressure=" + equilibriumVaporPressure
+                + ", leafVaporPressureDeficit=" + leafVaporPressureDeficit
+                + ", airDensity=" + airDensity
                 + ", super=" + super.toString()
                 + '}';
     }

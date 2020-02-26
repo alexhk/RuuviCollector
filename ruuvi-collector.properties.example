@@ -32,7 +32,7 @@
 #limitingStrategy.defaultWithMotionSensitivity.threshold=0.05
 
 # Filtering for sources based on the source MAC address (blacklist or whitelist)
-# Valid values "none", "blacklist" and "whitelist". 
+# Valid values "none", "blacklist", "whitelist" and "named".
 # none      = Allows any source to be stored (default)
 # blacklist = Allows all sources EXCEPT those listed
 # whitelist = Allows ONLY sources that are listed in filter.macs
@@ -63,6 +63,10 @@
 # would be stored with this combination. Setting storage.values=blacklist and leaving this list empty only results
 # in a warning, as that is essentially just the same as setting storage.values=extended -- nothing is banned.
 #storage.values.list =
+
+# If additional values are enabled, this sets the temperature offset for the leaf or canopy area for the calculation of
+# Leaf Vapor Pressure Deficit for green house applications. Defaults to -2C if not set.
+#leafToAirTempDifference=-1  ## UNUSED AT THE MOMENT ##
 
 #
 # Advanced configuration - Change these only if you know what you are doing

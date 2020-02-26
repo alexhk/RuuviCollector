@@ -15,6 +15,7 @@ public class MeasurementValueCalculator {
         measurement.setAbsoluteHumidity(absoluteHumidity(measurement.getTemperature(), measurement.getHumidity()));
         measurement.setDewPoint(dewPoint(measurement.getTemperature(), measurement.getHumidity()));
         measurement.setEquilibriumVaporPressure(equilibriumVaporPressure(measurement.getTemperature()));
+        measurement.setLeafVaporPressureDeficit(leafVaporPressureDeficit(measurement.getTemperature(), measurement.getHumidity()));
         measurement.setAirDensity(airDensity(measurement.getTemperature(), measurement.getHumidity(), measurement.getPressure()));
         measurement.setAccelerationTotal(totalAcceleration(measurement.getAccelerationX(), measurement.getAccelerationY(), measurement.getAccelerationZ()));
         measurement.setAccelerationAngleFromX(angleBetweenVectorComponentAndAxis(measurement.getAccelerationX(), measurement.getAccelerationTotal()));
@@ -95,6 +96,31 @@ public class MeasurementValueCalculator {
         return 611.2 * Math.exp(17.67 * temperature / (243.5 + temperature));
     }
 
+    /**
+     * Calculates the LeafVaporPressureDeficit
+     *
+     * @param temperature Temperature in Celsius
+     * @param relativeHumidity Relative humidity % (range 0-100)
+     * @return The VPD in kPa
+     */
+    public static Double leafVaporPressureDeficit(Double temperature, Double relativeHumidity) {
+        if (temperature == null || relativeHumidity == null || relativeHumidity == 0) {
+            return null;
+        }
+		// return 99;  // 99 TEST
+        // return 611.2 * Math.exp(17.67 * temperature / (243.5 + temperature));
+	    int leafToAirDiff = 2;
+	    double airTemp = temperature;
+	    double relHum = relativeHumidity;
+		double leafTemp = airTemp - leafToAirDiff;
+		double airSVP = ( 610.7 * Math.pow(10,7.5 * airTemp /(237.3 + airTemp))) / 1000;  // 1000=kPa
+		double leafSVP = ( 610.7 * Math.pow(10,7.5 * leafTemp /(237.3 + leafTemp))) / 1000;
+		double leafVPD = leafSVP - (airSVP * relHum/100);
+		// leafVPD = leafVPD.toFixed(4);
+		// debug
+	    System.out.println("leafVPD: [" + leafVPD + "] airTemp: [" + airTemp + "] relHum: [" + relHum + "]");
+		return leafVPD;
+    }
     /**
      * Calculates the air density
      *
